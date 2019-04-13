@@ -49,8 +49,15 @@ def main():
             if employee_position == -1:
                 print(f'### Employee with id {employee_id} not found ###')
             else:
-                salary = input('New salary: ')
-                print('\n')
+                while True:
+                    salary = input('New salary: ')
+                    print('\n')
+
+                    if int(salary) < 0:
+                        print(f'Introduce a valid salary, bigger than 0')
+                    else:
+                        break
+
                 employee_db = menu_functions.change_salary(employee_db, employee_id, salary)
                 with open('test.txt', 'w') as f:
                     for employee in employee_db:
