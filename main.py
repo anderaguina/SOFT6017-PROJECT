@@ -1,9 +1,13 @@
 import menu_functions
 
 def load_data():
-    print('Load data')
+    employee_db = open("employee_db.txt","r")
+    
+    return employee_db
+
 
 def show_menu():
+    print(f'\n------------------------------MENU-------------------------------\n')
     print('1. View all employees')
     print('2. View a particular employee')
     print('3. Edit the salary of an employee')
@@ -12,7 +16,9 @@ def show_menu():
     print('6. Give a bonus to each employee, writing the details to a file')
     print('7. Generate a report for management')
     print('8. Quit')
-    option = input()
+    print(f'\n-----------------------------------------------------------------\n')
+    option = input('Select an option from the menu: ')
+    
     return option
 
 
@@ -20,12 +26,27 @@ def save_data():
     print('Save data')
 
 def main():
-    # load_data()
+    employee_db = load_data()
     
     while True:
         selected_option = show_menu()
 
-        if selected_option == '8':
+        # Switch -> case not available without dicts
+        if selected_option == '1':
+            menu_functions.show_all_employees(employee_db)
+        elif selected_option == '2':
+            pass
+        elif selected_option == '3':
+            pass
+        elif selected_option == '4':
+            pass
+        elif selected_option == '5':
+            pass
+        elif selected_option == '6':
+            pass
+        elif selected_option == '7':
+            pass
+        elif selected_option == '8':
             break
 
     # save_data()

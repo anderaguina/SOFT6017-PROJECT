@@ -2,8 +2,14 @@ import helper_functions
 
 
 # Menu functions
-def show_all_employees():
-    print('Show all employees')
+def show_all_employees(employee_db):
+
+    print(f'------------------------LIST OF EMPLOYEES-------------------------\n')
+
+    for employee in employee_db:
+        print(employee)
+    
+    # print(f'\n-----------------------------------------------------------------\n')
     
 def show_employee(employee):
     print(f'Show specific employee {employee}')
