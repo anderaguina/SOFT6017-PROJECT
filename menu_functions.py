@@ -52,7 +52,7 @@ def add_employee(employee_db):
     email = helper_functions.generate_unique_email(name, last_name, employee_db)
 
     with open('test.txt', 'a') as f:
-        f.write('\n'+ str(unique_id) + ',')
+        f.write(str(unique_id) + ',')
         f.write(name + ',')  
         f.write(last_name + ',') 
         f.write(email + ',') 
