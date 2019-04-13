@@ -26,7 +26,7 @@ def save_data():
     print('Save data')
 
 def main():
-    employee_db = load_data()
+    employee_db = load_data().readlines()
     
     while True:
         selected_option = show_menu()
@@ -35,7 +35,8 @@ def main():
         if selected_option == '1':
             menu_functions.show_all_employees(employee_db)
         elif selected_option == '2':
-            pass
+            employee_id = input('Employee id: ')
+            menu_functions.show_employee(employee_db, employee_id)
         elif selected_option == '3':
             pass
         elif selected_option == '4':

@@ -1,6 +1,5 @@
 import helper_functions
 
-
 # Menu functions
 def show_all_employees(employee_db):
 
@@ -11,9 +10,18 @@ def show_all_employees(employee_db):
     
     # print(f'\n-----------------------------------------------------------------\n')
     
-def show_employee(employee):
-    print(f'Show specific employee {employee}')
+def show_employee(employee_db, employee_id):
 
+    employee_position = helper_functions.find_employee(employee_db, employee_id)
+    
+    print(f'------------------------SEARCH FOR EMPLOYEE-------------------------\n')
+
+    if employee_position == -1:
+        print(f'Employee with id {employee_id} not found')
+    else:
+        print(f'Employee found\n')
+        print(employee_db[employee_position])
+    
 def change_salary(salary):
     print(f'Change salary {salary}')
 
