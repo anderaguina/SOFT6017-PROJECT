@@ -44,8 +44,14 @@ def change_salary(employee_db, employee_id, salary):
 def add_employee(employee):
     print(f'Add employee')
 
-def remove_employee(employee):
-    print(f'Remove employee')
+def remove_employee(employee_db, employee_id):
+    employee_position = helper_functions.find_employee(employee_db, employee_id)
+
+    if employee_id == -1:
+        return -1
+
+    employee_db[employee_position] = ''
+    return employee_db
 
 def save_bonus_info():
     print('Save bonus info')

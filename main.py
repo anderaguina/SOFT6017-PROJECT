@@ -63,10 +63,22 @@ def main():
                     for employee in employee_db:
                         f.write(employee)
                 print(f'$$$ Salary changed to {salary} $$$\n')
-
             
         elif selected_option == '4':
-            pass
+            print(f'----------------------REMOVE EMPLOYEE-------------------------\n')
+
+            employee_id = input('Employee id: ')
+            print('\n')
+            employee_position = helper_functions.find_employee(employee_db, employee_id)
+            
+            if employee_position == -1:
+                print(f'### Employee with id {employee_id} not found ###')
+            else:
+                employee_db = menu_functions.remove_employee(employee_db, employee_id)
+                with open('test.txt', 'w') as f:
+                    for employee in employee_db:
+                        f.write(employee)
+                print(f'### Employee with id {employee_id} removed ###\n')
         elif selected_option == '5':
             pass
         elif selected_option == '6':
