@@ -41,11 +41,31 @@ def change_salary(employee_db, employee_id, salary):
     employee_db[employee_position] = employee_to_modify
     return employee_db
 
-def add_employee(employee):
-    print(f'Add employee')
+def add_employee(employee_db):
+    employee = []
 
-def remove_employee(employee):
-    print(f'Remove employee')
+    name = input('New employee name: ')
+    last_name = input('New employee last name: ')
+    salary = input('New employee salary: ')
+
+    unique_id = helper_functions.generate_unique_id(employee_db)
+    email = helper_functions.generate_unique_email(name, last_name, employee_db)
+
+    with open('test.txt', 'a') as f:
+        f.write('\n'+ str(unique_id) + ',')
+        f.write(name + ',')  
+        f.write(last_name + ',') 
+        f.write(email + ',') 
+        f.write(salary + '\n') 
+
+def remove_employee(employee_db, employee_id):
+    employee_position = helper_functions.find_employee(employee_db, employee_id)
+
+    if employee_id == -1:
+        return -1
+
+    employee_db[employee_position] = ''
+    return employee_db
 
 def save_bonus_info():
     print('Save bonus info')
