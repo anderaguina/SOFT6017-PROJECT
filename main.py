@@ -65,6 +65,8 @@ def main():
                 print(f'$$$ Salary changed to {salary} $$$\n')
             
         elif selected_option == '4':
+            menu_functions.add_employee(employee_db)
+        elif selected_option == '5':
             print(f'----------------------REMOVE EMPLOYEE-------------------------\n')
 
             employee_id = input('Employee id: ')
@@ -79,8 +81,6 @@ def main():
                     for employee in employee_db:
                         f.write(employee)
                 print(f'### Employee with id {employee_id} removed ###\n')
-        elif selected_option == '5':
-            pass
         elif selected_option == '6':
             pass
         elif selected_option == '7':
