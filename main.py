@@ -1,4 +1,6 @@
 import menu_functions
+import helper_functions
+
 
 def load_data():
     employee_db = open("employee_db.txt","r")
@@ -38,7 +40,24 @@ def main():
             employee_id = input('Employee id: ')
             menu_functions.show_employee(employee_db, employee_id)
         elif selected_option == '3':
-            pass
+            print(f'------------------------CHANGE SALARY FOR EMPLOYEE-------------------------\n')
+
+            employee_id = input('Employee id: ')
+            print('\n')
+            employee_position = helper_functions.find_employee(employee_db, employee_id)
+            
+            if employee_position == -1:
+                print(f'### Employee with id {employee_id} not found ###')
+            else:
+                salary = input('New salary: ')
+                print('\n')
+                employee_db = menu_functions.change_salary(employee_db, employee_id, salary)
+                with open('test.txt', 'w') as f:
+                    for employee in employee_db:
+                        f.write(employee)
+                print(f'$$$ Salary changed to {salary} $$$\n')
+
+            
         elif selected_option == '4':
             pass
         elif selected_option == '5':
