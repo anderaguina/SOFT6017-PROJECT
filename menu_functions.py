@@ -112,7 +112,7 @@ def generate_report(employee_db):
 
     print('------------- REPORT --------------')
     print(f'|Average salary: {average}|')
-    print(f'|Highest salary:           {highest_salary}|')
+    print(f'|Highest salary:           {float(highest_salary)}|')
     print(f'|Highest salary employees:        |')
     for employee in highest_salary_employees:
         print(f' -{employee}')

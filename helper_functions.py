@@ -77,10 +77,8 @@ def highest_salary(employee_db):
 
     for employee in employee_db:
         attr = employee.split(',')
-        if '\n' in attr[4]:
-            employee_salary = attr[4][:-2]
-        else:
-            employee_salary = attr[4]
+        
+        employee_salary = attr[4]
         
         if float(employee_salary) > float(highest_salary):
             highest_salary = employee_salary
@@ -91,14 +89,13 @@ def highest_salary(employee_db):
             highest_salary_employees.append(attr[1])
         elif float(employee_salary) == float(highest_salary):
             highest_salary_employees.append(attr[1])
-
     return highest_salary, highest_salary_employees
 
 def write_report_to_file(average, highest_salary, highest_salary_employees):
     with open('report.txt', 'w') as f:
         f.write('----------PRINTED REPORT----------\n')
         f.write(f'Average salary = {average}\n')
-        f.write(f'Highest salary = {highest_salary}\n')
+        f.write(f'Highest salary = {float(highest_salary)}\n')
         if len(highest_salary_employees) > 1:
             f.write(f'Highest salary employees are:\n')
         else:

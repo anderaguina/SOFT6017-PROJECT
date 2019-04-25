@@ -28,7 +28,6 @@ def save_data(employee_db):
     with open('employee_db.txt', 'w') as f:
         for employee in employee_db:
             attr = employee.split(',')
-            print('length = ', len(attr))
             if '\n' in employee:
                 f.write(employee)
             else:
@@ -120,9 +119,8 @@ def main():
 
         # Option 8
         elif selected_option == '8':
+            print('GOODBYE!')
             break
-
-    # save_data()
 
 
 if __name__ == '__main__':
