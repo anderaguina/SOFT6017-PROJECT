@@ -46,17 +46,33 @@ def add_employee(employee_db):
 
     name = input('New employee name: ')
     last_name = input('New employee last name: ')
-    salary = input('New employee salary: ')
-
+    
+    while True:
+        salary = input('New employee salary: ')
+        if int(salary) >= 0:
+            break
+        else:
+            print('Specify a valid salary, 0 for interns or > 0 for employees')
+    
     unique_id = helper_functions.generate_unique_id(employee_db)
     email = helper_functions.generate_unique_email(name, last_name, employee_db)
+    
+    print(type(name))
+    print(type(last_name))
+    print(type(unique_id))
+    print(type(email))
+    print(type(salary))
 
-    with open('test.txt', 'a') as f:
-        f.write(str(unique_id) + ',')
-        f.write(name + ',')  
-        f.write(last_name + ',') 
-        f.write(email + ',') 
-        f.write(salary + '\n') 
+    new_employee = '\n' + str(unique_id) + ',' + name + ',' + last_name \
+        + ',' + email + ',' + str(salary)
+
+    new_employee_pos = len(employee_db)
+
+    print('HERE', new_employee_pos)
+
+    employee_db.append(new_employee)
+
+    return employee_db
 
 def remove_employee(employee_db, employee_id):
     employee_position = helper_functions.find_employee(employee_db, employee_id)

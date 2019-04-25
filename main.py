@@ -59,13 +59,17 @@ def main():
                         break
 
                 employee_db = menu_functions.change_salary(employee_db, employee_id, salary)
-                with open('test.txt', 'w') as f:
+                with open('employee_db.txt', 'w') as f:
                     for employee in employee_db:
                         f.write(employee)
                 print(f'$$$ Salary changed to {salary} $$$\n')
             
         elif selected_option == '4':
-            menu_functions.add_employee(employee_db)
+            modified_employee_db = menu_functions.add_employee(employee_db)
+            with open('employee_db.txt', 'w') as f:
+                    for employee in modified_employee_db:
+                        f.write(employee)
+                        
         elif selected_option == '5':
             print(f'----------------------REMOVE EMPLOYEE-------------------------\n')
 
@@ -77,7 +81,7 @@ def main():
                 print(f'### Employee with id {employee_id} not found ###')
             else:
                 employee_db = menu_functions.remove_employee(employee_db, employee_id)
-                with open('test.txt', 'w') as f:
+                with open('employee_db.txt', 'w') as f:
                     for employee in employee_db:
                         f.write(employee)
                 print(f'### Employee with id {employee_id} removed ###\n')
