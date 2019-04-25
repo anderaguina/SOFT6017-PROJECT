@@ -80,8 +80,44 @@ def remove_employee(employee_db, employee_id):
 
     return employee_db
 
-def save_bonus_info():
-    print('Save bonus info')
+def save_bonus_info(employee_db, bonus):
 
-def generate_report():
-    print('Generate report')
+    bonus_db = []
+
+    for employee in employee_db:
+        attr = employee.split(',')
+        
+        employee_id = attr[0]
+        employee_name = attr[1]
+        employee_salary = attr[4]
+
+        bonus_percentage = float(1) + float(int(bonus)/100)
+        employee_bonus_value = float(employee_salary)*bonus_percentage
+
+        employee_bonus_details = employee_id + ',' + employee_name + ',' + str(employee_bonus_value) + '\n'
+        
+        bonus_db.append(employee_bonus_details)
+
+    with open('employee_bonus_db.txt', 'w') as f:
+        f.write('Id, Name, Bonus\n')
+        for employee in bonus_db:
+            f.write(employee)
+
+    return bonus_db
+
+def generate_report(employee_db):
+    average = helper_functions.calculate_average_salary(employee_db)
+
+    highest_salary, highest_salary_employees = helper_functions.highest_salary(employee_db)
+
+    print('------------- REPORT --------------')
+    print(f'|Average salary: {average}|')
+    print(f'|Highest salary:           {float(highest_salary)}|')
+    print(f'|Highest salary employees:        |')
+    for employee in highest_salary_employees:
+        print(f' -{employee}')
+    print('-----------------------------------')
+
+    print('Printing report -> report.txt ')
+
+    helper_functions.write_report_to_file(average, highest_salary, highest_salary_employees)

@@ -28,7 +28,6 @@ def save_data(employee_db):
     with open('employee_db.txt', 'w') as f:
         for employee in employee_db:
             attr = employee.split(',')
-            print('length = ', len(attr))
             if '\n' in employee:
                 f.write(employee)
             else:
@@ -42,12 +41,20 @@ def main():
 
         selected_option = show_menu()
 
+        bonus_db = []
+
         # Switch -> case not available without dicts
+
+        # Option 1
         if selected_option == '1':
             menu_functions.show_all_employees(employee_db)
+            
+        # Option 2
         elif selected_option == '2':
             employee_id = input('Employee id: ')
             menu_functions.show_employee(employee_db, employee_id)
+
+        # Option 3
         elif selected_option == '3':
             print(f'------------------------CHANGE SALARY FOR EMPLOYEE-------------------------\n')
 
@@ -73,11 +80,13 @@ def main():
 
                 print(f'$$$ Salary changed to {salary} $$$\n')
             
+        # Option 4
         elif selected_option == '4':
             modified_employee_db = menu_functions.add_employee(employee_db)
 
             save_data(modified_employee_db)
-                        
+
+        # Option 5              
         elif selected_option == '5':
             print(f'----------------------REMOVE EMPLOYEE-------------------------\n')
 
@@ -94,14 +103,24 @@ def main():
                 
                 print(f'### Employee with id {employee_id} removed ###\n')
 
+        # Option 6
         elif selected_option == '6':
-            pass
-        elif selected_option == '7':
-            pass
-        elif selected_option == '8':
-            break
+            print(f'----------------------END OF YEAR BONUS AMOUNT-------------------------\n')
 
-    # save_data()
+            bonus_amount = input('Bonus % amount: ')
+            print('\n')
+
+            bonus_db = menu_functions.save_bonus_info(employee_db, bonus_amount)
+
+        # Option 7
+        elif selected_option == '7':
+            #print(f'----------------------GENERATE REPORT-------------------------\n')
+            menu_functions.generate_report(employee_db)
+
+        # Option 8
+        elif selected_option == '8':
+            print('GOODBYE!')
+            break
 
 
 if __name__ == '__main__':
