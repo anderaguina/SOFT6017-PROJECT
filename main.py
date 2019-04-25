@@ -24,13 +24,22 @@ def show_menu():
     return option
 
 
-def save_data():
-    print('Save data')
+def save_data(employee_db):
+    with open('employee_db.txt', 'w') as f:
+        for employee in employee_db:
+            attr = employee.split(',')
+            print('length = ', len(attr))
+            if '\n' in employee:
+                f.write(employee)
+            else:
+                f.write(employee + '\n')
 
 def main():
-    employee_db = load_data().readlines()
     
     while True:
+
+        employee_db = load_data().readlines()
+
         selected_option = show_menu()
 
         # Switch -> case not available without dicts
@@ -59,12 +68,17 @@ def main():
                         break
 
                 employee_db = menu_functions.change_salary(employee_db, employee_id, salary)
-                with open('test.txt', 'w') as f:
-                    for employee in employee_db:
-                        f.write(employee)
+
+                save_data(employee_db)
+
                 print(f'$$$ Salary changed to {salary} $$$\n')
             
         elif selected_option == '4':
+            modified_employee_db = menu_functions.add_employee(employee_db)
+
+            save_data(modified_employee_db)
+                        
+        elif selected_option == '5':
             print(f'----------------------REMOVE EMPLOYEE-------------------------\n')
 
             employee_id = input('Employee id: ')
@@ -75,12 +89,11 @@ def main():
                 print(f'### Employee with id {employee_id} not found ###')
             else:
                 employee_db = menu_functions.remove_employee(employee_db, employee_id)
-                with open('test.txt', 'w') as f:
-                    for employee in employee_db:
-                        f.write(employee)
+
+                save_data(employee_db)
+                
                 print(f'### Employee with id {employee_id} removed ###\n')
-        elif selected_option == '5':
-            pass
+
         elif selected_option == '6':
             pass
         elif selected_option == '7':

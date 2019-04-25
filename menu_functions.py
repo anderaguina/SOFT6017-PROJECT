@@ -36,13 +36,39 @@ def change_salary(employee_db, employee_id, salary):
     employee_attributes[4] = salary
 
     employee_to_modify = employee_attributes[0] + ',' + employee_attributes[1] + ',' + \
-        employee_attributes[2] + ',' + employee_attributes[3] + ',' + employee_attributes[4] + '\n'
+        employee_attributes[2] + ',' + employee_attributes[3] + ',' + employee_attributes[4]
 
     employee_db[employee_position] = employee_to_modify
     return employee_db
 
-def add_employee(employee):
-    print(f'Add employee')
+def add_employee(employee_db):
+    employee = []
+
+    name = input('New employee name: ')
+    last_name = input('New employee last name: ')
+    
+    while True:
+        salary = input('New employee salary: ')
+        if int(salary) >= 0:
+            break
+        else:
+            print('Specify a valid salary, 0 for interns or > 0 for employees')
+    
+    unique_id = helper_functions.generate_unique_id(employee_db)
+    email = helper_functions.generate_unique_email(name, last_name, employee_db)
+    
+    print(type(name))
+    print(type(last_name))
+    print(type(unique_id))
+    print(type(email))
+    print(type(salary))
+
+    new_employee = str(unique_id) + ',' + name + ',' + last_name \
+        + ',' + email + ',' + str(salary)
+
+    employee_db.append(new_employee)
+
+    return employee_db
 
 def remove_employee(employee_db, employee_id):
     employee_position = helper_functions.find_employee(employee_db, employee_id)
@@ -50,7 +76,8 @@ def remove_employee(employee_db, employee_id):
     if employee_id == -1:
         return -1
 
-    employee_db[employee_position] = ''
+    employee_db.pop(employee_position)
+
     return employee_db
 
 def save_bonus_info():

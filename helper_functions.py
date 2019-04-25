@@ -1,8 +1,9 @@
-
+import random
+import json
+import string
 
 
 # Helper functions
-
 def find_employee(employee_db, employee_id):
     employee_position = 0
     for employee in employee_db:
@@ -17,8 +18,39 @@ def find_employee(employee_db, employee_id):
 
     return employee_position
 
-def generate_unique_id():
-    print('Generate unique id')
+def generate_unique_id(employee_db):
+    employee_ids = read_employee_ids(employee_db)
+    while True:
+        unique_id = random.randint(0, 99999)
+        if str(unique_id) not in employee_ids:
+            return unique_id
 
-def generate_unique_email():
-    print('Generate unique email')
+def generate_unique_email(name, last_name, employee_db):
+
+    employee_emails = read_employee_emails(employee_db)
+    while True:
+        name_extra = ''.join(random.choice(string.digits))
+    
+        email = name.lower() + '.' + last_name.lower() + name_extra + '@mycit.ie'
+        
+        if email not in employee_emails:
+            return email
+    
+
+    return email
+
+def read_employee_ids(employee_db):
+    employee_ids = []
+    for employee in employee_db:
+        employee_attributes = employee.split(',')
+        employee_ids.append(employee_attributes[0])
+    
+    return employee_ids
+
+def read_employee_emails(employee_db):
+    employee_emails = []
+    for employee in employee_db:
+        employee_attributes = employee.split(',')
+        employee_emails.append(employee_attributes[3])
+    
+    return employee_emails
