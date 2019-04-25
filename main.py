@@ -43,11 +43,17 @@ def main():
         selected_option = show_menu()
 
         # Switch -> case not available without dicts
+
+        # Option 1
         if selected_option == '1':
             menu_functions.show_all_employees(employee_db)
+            
+        # Option 2
         elif selected_option == '2':
             employee_id = input('Employee id: ')
             menu_functions.show_employee(employee_db, employee_id)
+
+        # Option 3
         elif selected_option == '3':
             print(f'------------------------CHANGE SALARY FOR EMPLOYEE-------------------------\n')
 
@@ -73,11 +79,13 @@ def main():
 
                 print(f'$$$ Salary changed to {salary} $$$\n')
             
+        # Option 4
         elif selected_option == '4':
             modified_employee_db = menu_functions.add_employee(employee_db)
 
             save_data(modified_employee_db)
-                        
+
+        # Option 5              
         elif selected_option == '5':
             print(f'----------------------REMOVE EMPLOYEE-------------------------\n')
 
@@ -94,10 +102,20 @@ def main():
                 
                 print(f'### Employee with id {employee_id} removed ###\n')
 
+        # Option 6
         elif selected_option == '6':
-            pass
+            print(f'----------------------END OF YEAR BONUS AMOUNT-------------------------\n')
+
+            bonus_amount = input('Bonus % amount: ')
+            print('\n')
+
+            menu_functions.save_bonus_info(employee_db, bonus_amount)
+
+        # Option 7
         elif selected_option == '7':
             pass
+
+        # Option 8
         elif selected_option == '8':
             break
 

@@ -80,8 +80,28 @@ def remove_employee(employee_db, employee_id):
 
     return employee_db
 
-def save_bonus_info():
-    print('Save bonus info')
+def save_bonus_info(employee_db, bonus):
+
+    bonus_db = []
+
+    for employee in employee_db:
+        attr = employee.split(',')
+        
+        employee_id = attr[0]
+        employee_name = attr[1]
+        employee_salary = attr[4]
+
+        bonus_percentage = float(1) + float(int(bonus)/100)
+        employee_bonus_value = float(employee_salary)*bonus_percentage
+
+        employee_bonus_details = employee_id + ',' + employee_name + ',' + str(employee_bonus_value) + '\n'
+        
+        bonus_db.append(employee_bonus_details)
+
+    with open('employee_bonus_db.txt', 'w') as f:
+        f.write('Id, Name, Bonus\n')
+        for employee in bonus_db:
+            f.write(employee)
 
 def generate_report():
     print('Generate report')
