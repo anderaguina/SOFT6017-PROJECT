@@ -118,4 +118,6 @@ def generate_report(employee_db):
         print(f' -{employee}')
     print('-----------------------------------')
 
+    print('Printing report -> report.txt ')
+
     helper_functions.write_report_to_file(average, highest_salary, highest_salary_employees)
