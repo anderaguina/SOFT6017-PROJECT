@@ -103,5 +103,19 @@ def save_bonus_info(employee_db, bonus):
         for employee in bonus_db:
             f.write(employee)
 
-def generate_report():
-    print('Generate report')
+    return bonus_db
+
+def generate_report(employee_db):
+    average = helper_functions.calculate_average_salary(employee_db)
+
+    highest_salary, highest_salary_employees = helper_functions.highest_salary(employee_db)
+
+    print('------------- REPORT --------------')
+    print(f'|Average salary: {average}|')
+    print(f'|Highest salary:           {highest_salary}|')
+    print(f'|Highest salary employees:        |')
+    for employee in highest_salary_employees:
+        print(f' -{employee}')
+    print('-----------------------------------')
+
+    helper_functions.write_report_to_file(average, highest_salary, highest_salary_employees)

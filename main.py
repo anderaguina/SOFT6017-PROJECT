@@ -42,6 +42,8 @@ def main():
 
         selected_option = show_menu()
 
+        bonus_db = []
+
         # Switch -> case not available without dicts
 
         # Option 1
@@ -109,11 +111,12 @@ def main():
             bonus_amount = input('Bonus % amount: ')
             print('\n')
 
-            menu_functions.save_bonus_info(employee_db, bonus_amount)
+            bonus_db = menu_functions.save_bonus_info(employee_db, bonus_amount)
 
         # Option 7
         elif selected_option == '7':
-            pass
+            #print(f'----------------------GENERATE REPORT-------------------------\n')
+            menu_functions.generate_report(employee_db)
 
         # Option 8
         elif selected_option == '8':
