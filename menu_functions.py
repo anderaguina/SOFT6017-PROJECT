@@ -36,7 +36,7 @@ def change_salary(employee_db, employee_id, salary):
     employee_attributes[4] = salary
 
     employee_to_modify = employee_attributes[0] + ',' + employee_attributes[1] + ',' + \
-        employee_attributes[2] + ',' + employee_attributes[3] + ',' + employee_attributes[4] + '\n'
+        employee_attributes[2] + ',' + employee_attributes[3] + ',' + employee_attributes[4]
 
     employee_db[employee_position] = employee_to_modify
     return employee_db
@@ -63,12 +63,8 @@ def add_employee(employee_db):
     print(type(email))
     print(type(salary))
 
-    new_employee = '\n' + str(unique_id) + ',' + name + ',' + last_name \
+    new_employee = str(unique_id) + ',' + name + ',' + last_name \
         + ',' + email + ',' + str(salary)
-
-    new_employee_pos = len(employee_db)
-
-    print('HERE', new_employee_pos)
 
     employee_db.append(new_employee)
 
@@ -80,7 +76,8 @@ def remove_employee(employee_db, employee_id):
     if employee_id == -1:
         return -1
 
-    employee_db[employee_position] = ''
+    employee_db.pop(employee_position)
+
     return employee_db
 
 def save_bonus_info():
