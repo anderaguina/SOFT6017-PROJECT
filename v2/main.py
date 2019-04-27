@@ -2,7 +2,7 @@ import data
 import menu
 import helpers
 
-# use argparse to get arguments such as employee db filename, report filename, debug flag etc - use some default values for each, ie employees.txt for employee db name etc
+
 
 while True:
     employees = data.load_data('employee_db.txt').readlines()
