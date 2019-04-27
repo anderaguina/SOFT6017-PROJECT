@@ -1,5 +1,5 @@
 ----------PRINTED REPORT----------
-Average salary = 56471.18666666667
+Average salary = 42603.375
 Highest salary = 67589.54
 Highest salary employees are:
 -Minnie

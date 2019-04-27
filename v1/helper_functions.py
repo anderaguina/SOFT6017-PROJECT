@@ -79,12 +79,20 @@ def highest_salary(employee_db):
         attr = employee.split(',')
         
         employee_salary = attr[4]
-        
+
+        print('Employee_salary = ', float(employee_salary))
+        print('Highest_salary = ', float(highest_salary))
+        print('len = ', len(highest_salary_employees))
+
         if float(employee_salary) > float(highest_salary):
             highest_salary = employee_salary
             
             for x in range(len(highest_salary_employees)):
-                highest_salary_employees.pop(x)
+                print('pop')
+                print('x = ', x)
+                print('len = ', len(highest_salary_employees))
+                print(f'poped employee in {len(highest_salary_employees) - 1}')
+                highest_salary_employees.pop(len(highest_salary_employees) - 1)
 
             highest_salary_employees.append(attr[1])
         elif float(employee_salary) == float(highest_salary):

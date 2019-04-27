@@ -1,0 +1,6 @@
+----------PRINTED REPORT----------
+Average salary = 37882.7
+Highest salary = 100000.0
+Highest salary employees are:
+-a
+-b
