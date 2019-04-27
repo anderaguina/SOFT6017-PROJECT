@@ -19,7 +19,7 @@ while True:
         employees = data.add_employee(employees, employeeId, fName, lName, email, salary)
         data.save_employees('test.txt', employees)
     elif option == menu.DELETE_EMPLOYEE:
-        employeeId, fName, lName, email, salary = menu.add_employee(employees)
-        employees = data.add_employee(employees, employeeId, fName, lName, email, salary)
+        employee_position, employee = menu.remove_employee(employees)
+        employees = data.remove_employee(employees, employee_position, employee)
         data.save_employees('test.txt', employees)
 # etc etc

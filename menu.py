@@ -87,3 +87,21 @@ def add_employee(employees):
     email = helpers.generate_unique_email(fName, lName, employees)
 
     return unique_id, fName, lName, email, salary
+
+def remove_employee(employees):
+
+    print(f'----------------------REMOVE EMPLOYEE-------------------------\n')
+
+    employee = input('Employee id: ')
+    print('\n')
+
+    while True:
+        employee_position = helpers.find_employee(employees, employee)
+        exists = helpers.employee_exists(employee_position, employee)
+
+        if exists != 0:
+            employee = input("employee id: ")
+            employee_position = helpers.find_employee(employees, employee)
+            exists = helpers.employee_exists(employee_position, employee)
+        else:
+            return employee_position, employee

@@ -42,3 +42,10 @@ def add_employee(employees, id, fName, lName, email, salary):
 
     return employees
 
+def remove_employee(employees, employee_position, employee):
+
+    print(f'### Removing employee with id {employee} ###\n')
+
+    employees.pop(employee_position)
+    
+    return employees                
