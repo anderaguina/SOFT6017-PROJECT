@@ -12,8 +12,7 @@ while True:
     elif option == menu.SHOW_EMPLOYEE:
         menu.show(employees)
     elif option == menu.CHANGE_SALARY:
-        employeeId = input("employee id: ")
-        employees = menu.change_salary(employees, employeeId)
+        employees = menu.change_salary(employees)
         data.save_employees('test.txt', employees)
     elif option == menu.ADD_EMPLOYEE:
         employeeId, fName, lName, email, salary = menu.add_employee(employees)

@@ -46,8 +46,9 @@ def show(employees):
         print(f'\nEmployee found:\n')
         print(employees[employee_position])
 
-def change_salary(employees, employee):
+def change_salary(employees):
     print(f'------------------------CHANGE EMPLOYEE SALARY-------------------------\n')
+    employee = input("employee id: ")
     while True:
         employee_position = helpers.find_employee(employees, employee)
         exists = helpers.employee_exists(employee_position, employee)
