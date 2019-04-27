@@ -1,5 +1,5 @@
 def load_data(filename):
-    employee_db = open(filename,"r")
+    employee_db = open(filename, "r")
     
     return employee_db
 
@@ -33,5 +33,12 @@ def change_salary(employees, employee_position, salary):
 
     return employees
 
+def add_employee(employees, id, fName, lName, email, salary):
 
+    new_employee = str(id) + ',' + fName + ',' + lName \
+        + ',' + email + ',' + str(salary)
+
+    employees.append(new_employee)
+
+    return employees
 

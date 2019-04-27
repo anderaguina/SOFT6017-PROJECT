@@ -6,14 +6,18 @@ import helpers
 
 while True:
     employees = data.load_data('test.txt').readlines()
-    option = menu.show_menu()
-    if int(option) == menu.SHOW_ALL_EMPLOYEES:
+    option = int(menu.show_menu())
+    if option == menu.SHOW_ALL_EMPLOYEES:
         menu.show_all(employees)
-    elif int(option) == menu.SHOW_EMPLOYEE:
+    elif option == menu.SHOW_EMPLOYEE:
         employeeId = input("employee id: ")
         menu.show(employees, employeeId)
-    elif int(option) == menu.CHANGE_SALARY:
+    elif option == menu.CHANGE_SALARY:
         employeeId = input("employee id: ")
         employees = menu.change_salary(employees, employeeId)
+        data.save_employees('test.txt', employees)
+    elif option == menu.ADD_EMPLOYEE:
+        employeeId, fName, lName, email, salary = menu.add_employee(employees)
+        employees = data.add_employee(employees, employeeId, fName, lName, email, salary)
         data.save_employees('test.txt', employees)
 # etc etc

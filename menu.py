@@ -46,6 +46,7 @@ def show(employees, employee):
         print(employees[employee_position])
 
 def change_salary(employees, employee):
+    print(f'------------------------CHANGE EMPLOYEE SALARY-------------------------\n')
     while True:
         employee_position = helpers.find_employee(employees, employee)
         exists = helpers.employee_exists(employee_position, employee)
@@ -68,6 +69,19 @@ def change_salary(employees, employee):
 
     return employees
 
-def add_employee():
-    pass
+def add_employee(employees):
+    print(f'------------------------ADD NEW EMPLOYEE-------------------------\n')
+    fName = input('New employee name: ')
+    lName = input('New employee last name: ')
 
+    while True:
+        salary = input('New employee salary: ')
+        if int(salary) >= 0:
+            break
+        else:
+            print('Specify a valid salary, 0 for interns or > 0 for employees')
+
+    unique_id = helpers.generate_unique_id(employees)
+    email = helpers.generate_unique_email(fName, lName, employees)
+
+    return unique_id, fName, lName, email, salary
