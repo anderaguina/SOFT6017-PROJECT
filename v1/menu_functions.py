@@ -56,12 +56,6 @@ def add_employee(employee_db):
     
     unique_id = helper_functions.generate_unique_id(employee_db)
     email = helper_functions.generate_unique_email(name, last_name, employee_db)
-    
-    print(type(name))
-    print(type(last_name))
-    print(type(unique_id))
-    print(type(email))
-    print(type(salary))
 
     new_employee = str(unique_id) + ',' + name + ',' + last_name \
         + ',' + email + ',' + str(salary)

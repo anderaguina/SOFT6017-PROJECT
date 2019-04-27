@@ -105,3 +105,29 @@ def remove_employee(employees):
             exists = helpers.employee_exists(employee_position, employee)
         else:
             return employee_position, employee
+
+def save_bonus_info(employees):
+    print(f'----------------------END OF YEAR BONUS AMOUNT-------------------------\n')
+
+    bonus_amount = input('Bonus % amount: ')
+    print('\n')
+
+    return bonus_amount
+
+def cli_report(employees):
+
+    average = helpers.calculate_average_salary(employees)
+
+    highest_salary, highest_salary_employees = helpers.highest_salary(employees)
+
+    print('------------- REPORT --------------')
+    print(f'|Average salary: {average}|')
+    print(f'|Highest salary:           {float(highest_salary)}|')
+    print(f'|Highest salary employees:        |')
+    for employee in highest_salary_employees:
+        print(f' -{employee}')
+    print('-----------------------------------')
+
+    print('Printing report -> report.txt ')
+
+    return average, highest_salary, highest_salary_employees
