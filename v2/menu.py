@@ -54,15 +54,15 @@ def change_salary(employees):
         exists = helpers.employee_exists(employee_position, employee)
 
         if exists != 0:
-            employee = input("employee id: ")
+            employee = input("\nemployee id: ")
             employee_position = helpers.find_employee(employees, employee)
             exists = helpers.employee_exists(employee_position, employee)
         else:
             break
     
     while True:
-        salary = input('New salary: ')
-        if int(salary) < 0:
+        salary = input('\nNew salary: ')
+        if float(salary) < 0:
             print(f'Introduce a valid salary, bigger than 0')
         else:
             break
@@ -93,7 +93,6 @@ def remove_employee(employees):
     print(f'----------------------REMOVE EMPLOYEE-------------------------\n')
 
     employee = input('Employee id: ')
-    print('\n')
 
     while True:
         employee_position = helpers.find_employee(employees, employee)
@@ -131,3 +130,6 @@ def cli_report(employees):
     print('Printing report -> report.txt ')
 
     return average, highest_salary, highest_salary_employees
+
+def quit():
+    print('GOODBYE!')

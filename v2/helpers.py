@@ -20,7 +20,7 @@ def find_employee(employee_db, employee_id):
 
 def employee_exists(employeePosition, employee_id):
     if employeePosition == -1:
-        print(f'### Employee with id {employee_id} not found ###')
+        print(f'\n### Employee with id {employee_id} not found ###')
         return -1
     else:
         return 0
@@ -86,26 +86,22 @@ def highest_salary(employee_db):
         attr = employee.split(',')
         
         employee_salary = attr[4]
+
+        print('Employee_salary = ', float(employee_salary))
+        print('Highest_salary = ', float(highest_salary))
+        print('len = ', len(highest_salary_employees))
         
         if float(employee_salary) > float(highest_salary):
             highest_salary = employee_salary
             
             for x in range(len(highest_salary_employees)):
-                highest_salary_employees.pop(x)
+                print('pop')
+                print('x = ', x)
+                print('len = ', len(highest_salary_employees))
+                print(f'poped employee in {len(highest_salary_employees) - 1}')
+                highest_salary_employees.pop(len(highest_salary_employees) - 1)
 
             highest_salary_employees.append(attr[1])
         elif float(employee_salary) == float(highest_salary):
             highest_salary_employees.append(attr[1])
     return highest_salary, highest_salary_employees
-
-def write_report_to_file(average, highest_salary, highest_salary_employees):
-    with open('report.txt', 'w') as f:
-        f.write('----------PRINTED REPORT----------\n')
-        f.write(f'Average salary = {average}\n')
-        f.write(f'Highest salary = {float(highest_salary)}\n')
-        if len(highest_salary_employees) > 1:
-            f.write(f'Highest salary employees are:\n')
-        else:
-            f.write(f'Highest salary employee is:\n')
-        for employee in highest_salary_employees:
-            f.write(f'-{employee}\n')

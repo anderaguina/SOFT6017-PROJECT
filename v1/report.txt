@@ -1,6 +1,6 @@
 ----------PRINTED REPORT----------
-Average salary = 56471.18666666667
-Highest salary = 67589.54
+Average salary = 37882.7
+Highest salary = 100000.0
 Highest salary employees are:
--Minnie
--Bugs
+-a
+-b
