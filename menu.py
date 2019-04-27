@@ -36,13 +36,14 @@ def show_all(employees):
     for employee in employees:
         print(employee)
 
-def show(employees, employee):
-    employee_position = helpers.find_employee(employees, employee)
+def show(employees):
     
     print(f'------------------------SEARCH FOR EMPLOYEE-------------------------\n')
+    employee = input("employee id: ")
+    employee_position = helpers.find_employee(employees, employee)
     exists = helpers.employee_exists(employee_position, employee)
     if exists == 0:
-        print(f'Employee found\n')
+        print(f'\nEmployee found:\n')
         print(employees[employee_position])
 
 def change_salary(employees, employee):
